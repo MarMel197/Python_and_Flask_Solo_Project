@@ -1,7 +1,8 @@
-from db.run_sql import run_sql
+from app.db.run_sql import run_sql
 
-from models.product import Product
-from models.manufacturer import Manufacturer
+from app.models.product import Product
+from app.models.manufacturer import Manufacturer
+import app.repositories.manufacturer_repository as manufacturer_repository
 
 def select_all():
     products = []
@@ -10,6 +11,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
+        manufacturer = manufacturer_repository(row['manufacturer_id'])
         product = Product(row['product_name'], row['product_description'], row['stock_on_hand'], row['cost_price'], row['sell_price'], row['id'] )
         products.append(product)
     return products
@@ -25,8 +27,8 @@ def select(id):
     return product
 
 def save(product):
-    sql = "INSERT INTO products (product_name, product_description, stock_on_hand, cost_price, sell_price) VALUES (%s, %s, %s, %s, %s) RETURNING *"
-    values = [product.product_name, product.product_description, product.stock_on_hand, product.cost_price, product.sell_price]
+    sql = "INSERT INTO products (product_name, product_description, stock_on_hand, cost_price, sell_price, manufacturer_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
+    values = [product.product_name, product.product_description, product.stock_on_hand, product.cost_price, product.sell_price, product.manufacturer.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     product.id = id
