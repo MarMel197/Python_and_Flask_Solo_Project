@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS product;
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     product_name VARCHAR(255),
-    product_description TEXT,
+    product_description VARCHAR(255),
     stock_on_hand INT,
     out_of_stock BOOLEAN,
     item_cost FLOAT,
