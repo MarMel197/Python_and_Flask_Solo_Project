@@ -11,8 +11,8 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        manufacturer = manufacturer_repository(row['manufacturer_id'])
-        product = Product(row['product_name'], row['product_description'], row['stock_on_hand'], row['cost_price'], row['sell_price'], row['id'] )
+        manufacturer = manufacturer_repository.select(row['manufacturers_id'])
+        product = Product(row['product_name'], row['product_description'], row['stock_on_hand'], row['item_cost'], row['item_sell'], row['id'] )
         products.append(product)
     return products
 
@@ -27,15 +27,15 @@ def select(id):
     return product
 
 def save(product):
-    sql = "INSERT INTO products (product_name, product_description, stock_on_hand, cost_price, sell_price, manufacturer_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
+    sql = "INSERT INTO products (product_name, product_description, stock_on_hand, item_cost, item_sell, manufacturers_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
     values = [product.product_name, product.product_description, product.stock_on_hand, product.cost_price, product.sell_price, product.manufacturer.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     product.id = id
     return product
 
-def update(user):
-    sql = "UPDATE product SET (product_name, product_description, stock_on_hand, cost_price, sell_price) = (%s, %s, %s, %s, %s) WHERE id = %s"
+def update(product):
+    sql = "UPDATE product SET (product_name, product_description, stock_on_hand, item_cost, item_sell) = (%s, %s, %s, %s, %s) WHERE id = %s"
     values = [product.product_name, product.product_description, product.stock_on_hand, product.cost_price, product.sell_price]
     run_sql(sql, values)
 

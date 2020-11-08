@@ -1,5 +1,11 @@
-DROP TABLE IF EXISTS manufacturer;
-DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS manufacturers;
+
+CREATE TABLE manufacturers (
+    id SERIAL PRIMARY KEY,
+    manufacturer_name VARCHAR(255),
+    product_type VARCHAR(255)
+);
 
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
@@ -9,11 +15,6 @@ CREATE TABLE products (
     out_of_stock BOOLEAN,
     item_cost FLOAT,
     item_sell FLOAT,
-    product_id INT REFERENCES products(id)
+    manufacturers_id INT REFERENCES manufacturers(id)
 );
 
-CREATE TABLE manufacturers (
-    id SERIAL PRIMARY KEY,
-    manufacturer_name VARCHAR(255),
-    product_type VARCHAR(255)
-);

@@ -5,8 +5,9 @@ from app.models.product import Product
 import app.repositories.manufacturer_repository as manufacturer_repository
 import app.repositories.product_repository as product_repository
 
-manufacturer_repository.delete_all()
 product_repository.delete_all()
+manufacturer_repository.delete_all()
+
 
 manufacturer_1 = Manufacturer('Heinz', 'Food products')
 manufacturer_repository.save(manufacturer_1)
@@ -29,4 +30,4 @@ product_repository.select_all()
 
 
 
-pdb.set_trace()
+# pdb.set_trace()
