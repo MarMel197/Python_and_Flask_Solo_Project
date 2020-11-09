@@ -1,2 +1,2 @@
-FLASK_APP=shop.py
+FLASK_APP=app.py
 FLASK_ENV=development

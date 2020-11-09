@@ -1,7 +1,7 @@
-from app.db.run_sql import run_sql
+from db.run_sql import run_sql
 
-from app.models.manufacturer import Manufacturer
-from app.models.product import Product
+from models.manufacturer import Manufacturer
+from models.product import Product
 
 
 # manufacturer_name
@@ -62,5 +62,5 @@ def manufacturers(product):
 
     for row in results:
         manufacturer = Manufacturer(row['manufacturer_name'], row['product_type'], row['id'])
-        tasks.append(task)
+        manufacturer.append(product)
     return tasks

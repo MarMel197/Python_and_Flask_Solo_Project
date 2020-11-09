@@ -1,9 +1,9 @@
 import pdb
-from app.models.manufacturer import Manufacturer
-from app.models.product import Product
+from models.manufacturer import Manufacturer
+from models.product import Product
 
-import app.repositories.manufacturer_repository as manufacturer_repository
-import app.repositories.product_repository as product_repository
+import repositories.manufacturer_repository as manufacturer_repository
+import repositories.product_repository as product_repository
 
 product_repository.delete_all()
 manufacturer_repository.delete_all()

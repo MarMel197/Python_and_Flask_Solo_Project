@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect
-from flas import Blueprint
-from app.models.product import Product
+from flask import Blueprint
+from models.product import Product
 
-import app.repositories.product_repository as product repository
-import app.repositories.manufacturer_repository as manufacturer_repository
+import repositories.product_repository as product_repository
+import repositories.manufacturer_repository as manufacturer_repository
 
 products_blueprint = Blueprint('products',__name__)
 
@@ -29,7 +29,7 @@ def create_product():
     return redirect('/products')
 
 
-@products_blueprint.route('/products/<id>', methids=['GET'])
+@products_blueprint.route('/products/<id>', methods=['GET'])
 def show_product(id):
     product = product_repository.select(id)
     return render_template('products/find_product.html', product = product)

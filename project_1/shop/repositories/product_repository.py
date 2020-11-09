@@ -1,8 +1,8 @@
-from app.db.run_sql import run_sql
+from db.run_sql import run_sql
 
-from app.models.product import Product
-from app.models.manufacturer import Manufacturer
-import app.repositories.manufacturer_repository as manufacturer_repository
+from models.product import Product
+from models.manufacturer import Manufacturer
+import repositories.manufacturer_repository as manufacturer_repository
 
 def select_all():
     products = []
