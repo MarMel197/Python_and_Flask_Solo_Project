@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add New Product</h2>
+
+<form action='/products' method='POST'>
+    <div>
+        <label for="product_name">Add Product:</label>
+        <input type="text" id="product_name" name="product_name" placeholder="name" required autofocus>
+    </div>
+    <div>
+        <label for="product_description">Description  :</label>
+        <input type="text" id="product_description" name="product_description" placeholder="description" required>
+    </div>   
+        <label for="stock_on_hand">Stock_on_Hand:</label>
+        <input type="number" id="stock_on_hand" name="stock_on_hand" placeholder="Stock on hand" required>
+    <div>    
+        <label for="cost_price">Cost Price:</label>
+        <input type="number" id="cost_price" name="cost_price" placeholder="Cost Price" required>
+    </div>   
+        <label for="sell_price">Sell cost_price:</label>
+        <input type="number" id="sell_price" name="sell_price" placeholder="Sell Price" required>
+    <div>    
+        <label for="manufacturer">Manufacturer:</label>
+        <select name="manufacturer_id" id="manufacturer">
+            {% for manufacturer in manufacturers %}
+                <option value="{{ manufacturer.id }}">{{ manufacturer.manufacturer_name }}</option>
+            {% endfor %}
+    </div>
+        </select>
+        <input type='submit'>
+</form>
+{% endblock content %}
+
+
+<!-- # product_name
+# product_description
+# stock_on_hand
+# out_of_stock
+# cost_price
+# sell_price -->

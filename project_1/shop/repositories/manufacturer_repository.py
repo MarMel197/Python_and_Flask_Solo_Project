@@ -15,7 +15,7 @@ def select_all():
 
     for row in results:
         manufacturer = Manufacturer(row['manufacturer_name'], row['product_type'], row['id'] )
-        manufacturer.append(manufacturer)
+        manufacturers.append(manufacturer)
     return manufacturers
 
 def select(id):
