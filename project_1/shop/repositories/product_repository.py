@@ -12,7 +12,7 @@ def select_all():
 
     for row in results:
         manufacturer = manufacturer_repository.select(row['manufacturers_id'])
-        product = Product(row['product_name'], row['product_description'], row['stock_on_hand'], row['item_cost'], row['item_sell'], row['id'] )
+        product = Product(row['product_name'], row['product_description'], row['stock_on_hand'], row['item_cost'], row['item_sell'], manufacturer,row['id'])
         products.append(product)
     return products
 
@@ -23,7 +23,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        product = Product(result['product_name'], result['product_description'], result['stock_on_hand'], result['cost_price'], result['sell_price'], result['id'])
+        product = Product(result['product_name'], result['product_description'], result['stock_on_hand'], result['item_cost'], result['item_sell'], result['id'])
     return product
 
 def save(product):

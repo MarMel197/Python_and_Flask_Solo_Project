@@ -37,13 +37,13 @@ def get_form():
 @products_blueprint.route('/products/<id>', methods=['GET'])
 def show_product(id):
     product = product_repository.select(id)
-    return render_template('products/find_product.html', product = product)
+    return render_template('products/edit.html', product = product)
 
-@products_blueprint.route('/product/<id>/edit', methods=['GET'])
+@products_blueprint.route('/products/<id>/edit', methods=['GET'])
 def edit_product(id):
     product = product_repository.select(id)
-    manufacturer = manufacturer_repository.select_all()
-    return render_template('products/edit.html', product = product, all_manufacturers = manufacturers)
+    manufacturers = manufacturer_repository.select_all()
+    return render_template('products/edit.html', product = product, manufacturers = manufacturers)
 
 
 @products_blueprint.route('/products/<id>', methods=['POST'])
@@ -67,10 +67,5 @@ def delete_product(id):
     return redirect('/products')
 
 
-# product_name
-# product_description
-# stock_on_hand
-# out_of_stock
-# cost_price
-# sell_price
+
 

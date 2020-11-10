@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Manufacturers</h2>
+
+<form action='/manufacturers' method='POST'></form>
+
+<div>
+    <label for="manufacturer_name">Add Manufacturer:</label>
+    <input type="text" id="manufacturer_name" name="manufacturer_name" placeholder="Manufacturer" required autofocus>
+</div>
+<div>
+    <label for="product_type">Product Type  :</label>
+    <input type="text" id="product_type" name="product_type" placeholder="i.e. Canned Foods" required>
+</div> 
+<input type='submit'>
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>List Products</h2>
+<h2>Products</h2>
 {% for product in all_products %}
     <hr>
     <h4>{{product.product_name}}</h4>
@@ -8,6 +8,8 @@
     <h5>{{product.stock_on_hand}}</h5>
     <h5>{{product.cost_price}}</h5>
     <h5>{{product.sell_price}}</h5>
+
+    <a href="/products/{{product.id}}/edit">Edit Product</a>
     
 {% endfor %}
 
