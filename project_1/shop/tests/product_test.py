@@ -4,8 +4,8 @@ from app.models.product import Product
 class TestProduct(unittest.TestCase):
     
     def setUp(self):
-        self.product = Product('Vegetable Soup', 'Tinned Products', 12, 0.65, 0.90)
-        self.product1 = Product('Noodle soup', 'Tinned Products', 24, 0.45, 0.75)
+        self.product = Product('Vegetable Soup', 'Tinned Products', 12, 1, 2)
+        self.product1 = Product('Noodle soup', 'Tinned Products', 24, 1, 2)
     
     def test_product_has_name(self):
         self.assertEqual('Vegetable Soup', self.product.product_name)
@@ -26,16 +26,16 @@ class TestProduct(unittest.TestCase):
         self.assertEqual(24 , self.product1.stock_on_hand)
 
     def test_product_has_cost_price(self):
-        self.assertEqual(0.65 , self.product.cost_price)
+        self.assertEqual(1 , self.product.cost_price)
     
     def test_another_product_has__cost_price(self):
-        self.assertEqual(0.45 , self.product1.cost_price)
+        self.assertEqual(1 , self.product1.cost_price)
 
     def test_product_has_sell_price(self):
-        self.assertEqual(0.90 , self.product.sell_price)
+        self.assertEqual(2 , self.product.sell_price)
     
     def test_another_product_has__sell_price(self):
-        self.assertEqual(0.75 , self.product1.sell_price)
+        self.assertEqual(2 , self.product1.sell_price)
 
 # product_name
 # product_description

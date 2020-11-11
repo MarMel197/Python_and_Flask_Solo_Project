@@ -13,8 +13,8 @@ CREATE TABLE products (
     product_description VARCHAR(255),
     stock_on_hand INT,
     out_of_stock BOOLEAN,
-    item_cost FLOAT,
-    item_sell FLOAT,
+    item_cost INT,
+    item_sell INT,
     manufacturers_id INT REFERENCES manufacturers(id)
 );
 
