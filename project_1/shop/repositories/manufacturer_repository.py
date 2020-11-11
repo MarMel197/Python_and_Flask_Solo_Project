@@ -64,13 +64,3 @@ def manufacturers(product):
         manufacturer = Manufacturer(row['manufacturer_name'], row['product_type'], row['id'])
         manufacturer.append(product)
     return tasks
-
-# def search_by_name(manufacturer_name):
-#     manufacturer=None
-#     sql = "SELECT * FROM manufacturers WHERE manufacturer_name = %s"
-#     values = [manufacturer_name]
-#     result = run_sql(sql, values)[0]
-
-#     if result is not None:
-#         manufacturer = Manufacturer(result['manufacturer_name'], result['product_type'], result['id'] )
-#     return manufacturer
